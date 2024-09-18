@@ -93,7 +93,30 @@ yum install redis -y
 systemctl enable redis
 systemctl start redis
 ```
+Проверим его статус командой:
+```
+systemctl status redis
+```
+<img src = "img/03.png" width = 100%>
 
+Открываем командную строку Redis:
+```
+redis-cli
+```
+И запишем несколько ключей с любыми именами и значениями:
+```
+SET key1 "netology01"
+SET key2 "netology02"
+SET key3 "netology03"
+```
+
+Теперь, для того чтобы прочитать эти ключи выполним следующие команды:
+```
+GET key1
+GET key2
+GET key3
+```
+<img src = "img/04.png" width = 100%>
 
 ---
 ## Задание 5*. Работа с числами
