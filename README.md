@@ -86,6 +86,15 @@ END
 
 ### Ответ:
 
+Установим Redis, выполнив следующие команды:
+```
+yum install epel-release -y
+yum install redis -y
+systemctl enable redis
+systemctl start redis
+```
+
+
 ---
 ## Задание 5*. Работа с числами
 Запишите в Redis ключ key5 со значением типа "int" равным числу 5. Увеличьте его на 5, чтобы в итоге в значении лежало число 10.
