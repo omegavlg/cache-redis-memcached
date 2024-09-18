@@ -34,7 +34,7 @@
 
 Установка:
 ```
-yum install memcached 
+yum install memcached -y
 ```
 
 Запуск и добавление memcached в автозапуск:
@@ -56,6 +56,27 @@ systemctl status memcached
 Приведите скриншот, на котором видно, что спустя 5 секунд ключи удалились из базы.
 
 ### Ответ:
+
+Дополнительно установим nc(netcat) для отправки и получения данных через сетевые соединения.
+```
+yum install nc -y
+```
+Далее выполним команды записи ключей с TTL5:
+```
+printf "set key1 0 5 6\r\nvalue1\r\n" | nc localhost 11211
+STORED
+printf "set key2 0 5 6\r\nvalue2\r\n" | nc localhost 11211
+STORED
+```
+
+И проверим значения после истечения 5 секунд:
+```
+printf "get key1\r\n" | nc localhost 11211
+END
+printf "get key2\r\n" | nc localhost 11211
+END
+```
+<img src = "img/02.png" width = 100%>
 
 ---
 ## Задание 4. Запись данных в Redis
